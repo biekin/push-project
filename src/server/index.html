@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+<head>
+    <meta charset="utf-8">
+    <title>TestFront</title>
+</head>
+<body>
+    <a>Hello</a>
+    <div ng-app="myApp" ng-controller = "myCtrl" >
+            <div ng-repeat="alert in alerts">
+                <li>{{alert.content}}</li>
+            </div>
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", ['$scope', '$http', function($scope, $http) {
+            $scope.alerts = [{content: "asdf"}];
+
+            const getAlerts = () => $http({method: 'GET', url: 'http://localhost:3000/alerts'}).then(
+                function successCallback(response) {
+                    console.log(response)
+                    $scope.alerts = $scope.alerts.concat(response.data)
+                    getAlerts();
+                },
+                function errorCallback(response) {
+                    console.log(response);
+                    getAlerts();
+                }
+            )
+            getAlerts();
+            }]);
+        </script>
+    </script>
+</body>
+</html>
