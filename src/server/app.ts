@@ -1,5 +1,7 @@
 import express = require('express');
 import {SimplePushEndpoint} from '../lib/LongPollLib';
+import {StringHandler} from '../lib/implementations/StringHandler';
+import {NumberHandler} from '../lib/implementations/NumberHandler';
 import {Alert, connect} from './alerts'
 import { MyPushEndpoint } from './MyPushEndpoint'
 var bodyParser = require('body-parser')
@@ -21,6 +23,15 @@ app.get('/', (req, res) => {
 
 app.post('/alert', (req, res) => {
     console.log(req.body);
+
+    var handler = new StringHandler();
+    var handler2 = new NumberHandler();
+    handler2.AddHandler(handler);
+
+    handler2.Handle(req.body.content);
+
+
+
     let alert = new Alert(req.body);
 
     alert.save((err: any) => {
