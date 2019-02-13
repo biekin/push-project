@@ -1,7 +1,10 @@
 import express = require('express');
 import {SimplePushEndpoint} from '../lib/LongPollLib';
-import {StringHandler} from '../lib/implementations/StringHandler';
-import {NumberHandler} from '../lib/implementations/NumberHandler';
+import {FirstHandler} from '../lib/implementations/FirstHandler';
+import {SecondHandler} from '../lib/implementations/SecondHandler';
+import {ThirdHandler} from '../lib/implementations/ThirdHandler';
+import {FourthHandler} from '../lib/implementations/FourthHandler';
+import {LastHandler} from '../lib/implementations/LastHandler';
 import {Alert, connect} from './alerts'
 import { MyPushEndpoint } from './MyPushEndpoint'
 var bodyParser = require('body-parser')
@@ -26,11 +29,18 @@ app.get('/', (req, res) => {
 app.post('/alert', (req, res) => {
     console.log(req.body);
 
-    var handler = new StringHandler();
-    var handler2 = new NumberHandler();
-    handler2.AddHandler(handler);
+    var handler = new FirstHandler();
+    var handler2 = new SecondHandler();
+    var handler3 = new ThirdHandler();
+    var handler4 = new FourthHandler();
+    var handler5 = new LastHandler();
 
-    handler2.Handle(req.body.content);
+    handler.AddHandler(handler2);
+    handler2.AddHandler(handler3);
+    handler3.AddHandler(handler4);
+    handler4.AddHandler(handler5);
+
+    handler.Handle(req.body);
 
 
 

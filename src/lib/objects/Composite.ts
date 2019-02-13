@@ -2,7 +2,7 @@
 import { IComponent } from './../Interfaces/IComponent';
 
 
-export abstract class Composite<T> implements IComponent {
+export class Composite<T> implements IComponent {
 
     private _list: IComponent[];
     private _data: T;
@@ -29,4 +29,7 @@ export abstract class Composite<T> implements IComponent {
       this._list.splice(n,1);
     }
 
+    public getData(): T {
+      return this._data;
+    }
 }
