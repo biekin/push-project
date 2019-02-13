@@ -1,0 +1,30 @@
+  body {
+    background-image: url("/background.jpg");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FCDD06;
+    font-family: "Arial";
+
+  }
+
+  .list {
+    border-style: solid;
+    border-color: #AC0E0E;
+    border-radius: 5px;
+  }
+
+  h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+  li {
+      border-left: 6px groove red;
+      font-size: 16px;
+      list-style-type: none;
+      margin: 10px
+  }

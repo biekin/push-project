@@ -12,6 +12,8 @@ const app: express.Application = express();
 const PushEndpoint: SimplePushEndpoint = new SimplePushEndpoint('/hello');
 const DatabasePushEndpoint: MyPushEndpoint = new MyPushEndpoint('/alerts', Alert, {});
 
+app.use(express.static(path.join(__dirname, '../server')));
+
 app.configure(function(){
     app.use(bodyParser.json())
     app.use(cors({ origin: 'http://localhost:3000', methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', allowedHeaders: ['Content-Type', 'Authorization', 'Origin', 'x-access-token', 'XSRF-TOKEN'], preflightContinue: false }));
