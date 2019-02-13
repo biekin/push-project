@@ -42,8 +42,6 @@ app.post('/alert', (req, res) => {
 
     handler.Handle(req.body);
 
-
-
     let alert = new Alert(req.body);
 
     alert.save((err: any) => {

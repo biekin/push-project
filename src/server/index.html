@@ -11,8 +11,10 @@
     <h1>Powiadomienia o zagrożeniu</h1>
     <div ng-app="myApp" ng-controller = "myCtrl" class="list">
       <h2> Uwaga! </h2>
-            <div  ng-repeat="alert in alerts">
-                <li>{{alert.disasterType}} {{alert.country}} {{alert.city}} {{alert.level}}</li>
+            <div  ng-repeat="alert in alerts | orderBy: reverse:true | limitTo: 20">
+              <div ng-repeat="cityalert in alert.city">
+                <li> Zagrożenie: {{alert.disasterType}} w {{alert.country}} w miejscowość {{cityalert}}. Poziom zagrożenia: {{alert.level}}</li>
+              </div>
             </div>
     </div>
     <script src="/myCtrl.js"> </script>

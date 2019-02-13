@@ -4,7 +4,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-color: #FCDD06;
-    font-family: "Arial";
+    font-family: "Times New Roman";
 
   }
 
@@ -12,6 +12,7 @@
     border-style: solid;
     border-color: white;
     border-radius: 5px;
+    background: rgba( 255, 255, 255, 0.3);
   }
 
   h1 {
