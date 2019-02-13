@@ -13,14 +13,20 @@ export function connect(callback: any) {
     });
 }
 
+
 export interface IAlert extends mongoose.Document {
     level: number;
-    content: string;
+    disasterType: string;
+    country: string;
+    city: [string];
+
 }
 
 export const AlertSchema = new mongoose.Schema({
     level: {type: String, required: true},
-    content: {type: String, required: true}
+    disasterType: {type: String, required: true},
+    country: {type: String, required: true},
+    city: {type: [String], required: true}
 })
 
 export const Alert = mongoose.model('Alert', AlertSchema);

@@ -6,16 +6,16 @@
     <title>TestFront</title>
 </head>
 <body>
-    <a>Hello</a>
+    <a>Powiadomienie</a>
     <div ng-app="myApp" ng-controller = "myCtrl" >
             <div ng-repeat="alert in alerts">
-                <li>{{alert.content}}</li>
+                <li>Uwaga! {{alert.disasterType}} {{alert.country}} {{alert.city}}</li>
             </div>
     </div>
     <script>
         var app = angular.module("myApp", []);
         app.controller("myCtrl", ['$scope', '$http', function($scope, $http) {
-            $scope.alerts = [{content: "asdf"}];
+            $scope.alerts= [{}] ;
 
             const getAlerts = () => $http({method: 'GET', url: 'http://localhost:3000/alerts'}).then(
                 function successCallback(response) {
