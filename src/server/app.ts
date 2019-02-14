@@ -1,10 +1,11 @@
 import express = require('express');
 import {SimplePushEndpoint} from '../lib/LongPollLib';
-import {FirstHandler} from '../lib/implementations/FirstHandler';
-import {SecondHandler} from '../lib/implementations/SecondHandler';
-import {ThirdHandler} from '../lib/implementations/ThirdHandler';
-import {FourthHandler} from '../lib/implementations/FourthHandler';
+
+import {Handler2} from '../lib/implementations/Handler2';
+import {Handler1} from '../lib/implementations/Handler1';
 import {LastHandler} from '../lib/implementations/LastHandler';
+import {Composite} from '../lib/objects/Composite';
+
 import {Alert, connect} from './alerts'
 import { MyPushEndpoint } from './MyPushEndpoint'
 var bodyParser = require('body-parser')
@@ -28,19 +29,25 @@ app.get('/', (req, res) => {
 
 app.post('/alert', (req, res) => {
     console.log(req.body);
+    var inne = new Composite<String>("inne");
+    var listtt = new Array(inne);
+    var pozar = new Composite<String>("pożar");
 
-    var handler = new FirstHandler();
-    var handler2 = new SecondHandler();
-    var handler3 = new ThirdHandler();
-    var handler4 = new FourthHandler();
-    var handler5 = new LastHandler();
+    listtt.push(pozar);
+
+    var handler = new Handler1();
+    var handler2 = new Handler2();
+    var handler3 = new LastHandler();
 
     handler.AddHandler(handler2);
     handler2.AddHandler(handler3);
-    handler3.AddHandler(handler4);
-    handler4.AddHandler(handler5);
 
-    handler.Handle(req.body);
+    handler.AddComponent(listtt);
+    var a = handler.Handle(req.body);
+    a.execute();
+
+
+
 
     let alert = new Alert(req.body);
 

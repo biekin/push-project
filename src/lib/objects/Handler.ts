@@ -5,7 +5,6 @@ import { IComponent } from './../Interfaces/IComponent';
 export abstract class Handler implements IHandler {
 
      _handler: Handler;
-     _componet: IComponent;
      constructor() {
      }
     public Handle(data: any): IComponent {
@@ -19,8 +18,5 @@ export abstract class Handler implements IHandler {
 
     public AddHandler(handler: Handler): void {
       this._handler = handler;
-    }
-    public SetComponent(component: IComponent): void {
-      this._componet = component;
     }
 }
