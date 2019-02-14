@@ -14,7 +14,7 @@ export class ObjectLeaf extends Leaf<object> {
       service: 'gmail',
       auth: {
         user: 'biusiakakum@gmail.com',
-        pass: 'Koliber123'
+        pass: ''
       }
     });
 
