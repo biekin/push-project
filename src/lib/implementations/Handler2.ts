@@ -28,11 +28,9 @@ export class Handler2 extends Handler {
      return this._componet;
   }
 
-  AddComponent(components: Composite<String>[]):void {
-    for (let iter in components) {
-      if (components[iter].getData() === "pożar") {
-        this._componet = components[iter];
-      }
+  AddComponent(components: any):void {
+    if (typeof components.pożar !== 'undefined') {
+      this._componet = components.pożar;
     }
   }
 }

@@ -29,11 +29,9 @@ export class LastHandler extends Handler {
      return this._componet;
   }
 
-  AddComponent(components: Composite<String>[]):void {
-    for (let iter in components) {
-      if (components[iter].getData() === "inne") {
-        this._componet = components[iter];
-      }
+  AddComponent(components: any):void {
+    if (typeof components.inne !== 'undefined') {
+      this._componet = components.inne;
     }
   }
 }

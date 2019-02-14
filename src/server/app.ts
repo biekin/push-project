@@ -29,23 +29,24 @@ app.get('/', (req, res) => {
 
 app.post('/alert', (req, res) => {
     console.log(req.body);
-    var inne = new Composite<String>("inne");
-    var listtt = new Array(inne);
-    var pozar = new Composite<String>("pożar");
 
-    listtt.push(pozar);
+    var mapa = {pożar: new Composite<String>("pożar"),sesja:new Composite<String>("sesja"),inne:new Composite<String>("inne") };
 
     var handler = new Handler1();
+    handler.AddComponent(mapa);
     var handler2 = new Handler2();
+    handler2.AddComponent(mapa);
     var handler3 = new LastHandler();
+    handler3.AddComponent(mapa);
 
     handler.AddHandler(handler2);
     handler2.AddHandler(handler3);
 
-    handler.AddComponent(listtt);
+    //handler.AddComponent(listtt);
     var a = handler.Handle(req.body);
-    a.execute();
+    //a.execute();
 
+    mapa.pożar.execute();
 
 
 

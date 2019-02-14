@@ -28,11 +28,11 @@ export class Handler1 extends Handler {
      return this._componet;
   }
 
-  AddComponent(components: Composite<String>[]):void {
-    for (let iter in components) {
-      if (components[iter].getData() === "sesja") {
-        this._componet = components[iter];
-      }
+  AddComponent(components: any):void {
+    if (typeof components.sesja !== 'undefined') {
+      console.log("------------");
+      this._componet = components.sesja;
     }
+
   }
 }
