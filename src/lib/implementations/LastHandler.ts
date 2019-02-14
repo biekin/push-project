@@ -17,7 +17,6 @@ export class LastHandler extends Handler {
 
 
     if ('disasterType' in data && typeof data.disasterType === 'string') {
-      console.log("last");
       var newLeaf = new ObjectLeaf(data);
       this._componet.add(newLeaf);
       return this._componet;

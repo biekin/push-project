@@ -16,7 +16,6 @@ export class Handler1 extends Handler {
   public Handle(data: any) {
 
     if ('disasterType' in data && typeof data.disasterType === 'string' && data.disasterType == 'sesja') {
-      console.log("pierwszy");
       var newLeaf = new ObjectLeaf(data);
       this._componet.add(newLeaf);
       return this._componet;
@@ -30,9 +29,7 @@ export class Handler1 extends Handler {
 
   AddComponent(components: any):void {
     if (typeof components.sesja !== 'undefined') {
-      console.log("------------");
       this._componet = components.sesja;
     }
-
   }
 }

@@ -13,16 +13,16 @@ export class ObjectLeaf extends Leaf<object> {
     var transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'biusiakakum@gmail.com',
-        pass: ''
+        user: 'pushserver.designpatterns@gmail.com',
+        pass: 'Biedroneczka'
       }
     });
 
     var mailOptions = {
-      from: 'biusiakakum@gmail.com',
-      to: 'paulina333.97@o2.pl',
+      from: 'pushserver.designpatterns@gmail.com',
+      to: 'design_patterns@o2.pl',
       subject: this._data.disasterType,
-      html: '<h1>'+this._data.disasterType+'<h1> i inne dane'
+      html: '<h1>'+this._data.disasterType+'<h1> <h2> level: '+this._data.level+'<h2><h2> kraj: '+this._data.country+'<h2><h2> miasta: '+this._data.city+'<h2>'
     };
 
     transporter.sendMail(mailOptions, function(error, info){
